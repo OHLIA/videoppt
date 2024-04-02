@@ -1,66 +1,69 @@
 > 在桌面标准化环境使用（如windows下），pip大于19.3版本，python大于3.7
 
-安装模块，
+## 安装模块
 
 ```shell
-Pillow，opencv-python，numpy，scikit-image，python-pptx
+python pip pillow opencv-python numpy scikit-image python-pptx
 #需要使用合并ppt需要安装python-pptx模块
 ```
 
-脚本具体帮助文档
+## 脚本具体帮助文档
 ```shell
-python opencv.py -h
+python v2ppt.py -h
 ```
-# 直播录屏
+## 直播录屏
 
 >可以使用脚本录屏或者专业的录屏软件
 ```shell
-python opencv.py -r
+python v2ppt.py -r
 ```
 
-# 提取图片
+## 提取图片
 
-==视频里的动画变化跟人脸识别导致生成大量文件。==
+视频里的动画变化跟人脸识别导致生成大量文件。
 
-- 均值哈希算法使用
+### 均值哈希算法
 
 ```shel
-python opencv.py -f file --ahash -s 0.98
+python v2ppt.py -f file --ahash -s 0.98
 ```
 
 默认-s相似度0.98。
 
+### 帧去重
+
 - 只去除完全一样的图片，进行跳帧截屏时，类似间隔一段时间截图【不是很推荐】。
 
-  ```shell
-  python opencv.py -f file --same
-  ```
+```shell
+python v2ppt.py -f file --same
+```
 
-- SSIM算法,使用的scikit-image模块,效果不错，推荐使用。【相比实现的ahash算法更慢，不过看上去更不错】
+### SSIM算法
 
-  相似信息多推荐使用0.98
+- 使用的scikit-image模块,效果不错，推荐使用。【相比实现的ahash算法更慢，不过看上去更不错】
+
+  相似信息多推荐使用0.98，相似低于该值则截取。
   
-  ```shell
-  python opencv.py -f file --ssim -s 0.98
-  ```
-  
-  > ==增加跳帧功能，视频连贯性比较好时使用==，即舍弃一些画面。
+```shell
+python v2ppt.py -f file --ssim -s 0.98
+```
+
+### 跳帧
+
+  > 增加跳帧功能，视频连贯性比较好时使用，即舍弃一些画面。
 
 默认跳帧10
 
 ```shell
-python .\opencv.py -f .\video.avi --ahash -s 0.98 --frameskip 10
+python .\v2ppt.py -f .\video.avi --ahash -s 0.98 --frameskip 10
 ```
 
 看连贯性，好的，可以考虑跳1000帧，具体看相似度（程序会打印出来）如何。
 
-# 转ppt
+## 转ppt
 
 挑选整理好图片后，使用程序直接转ppt，或者ppt中一次导入。
 
 ```shell
-python opencv.py -p -d result
+python v2ppt.py -p -d result
 ```
-
-
-

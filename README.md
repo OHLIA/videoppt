@@ -3,7 +3,7 @@
 安装模块，
 
 ```shell
-Pillow，opencv-python，numpy，scikit-image
+Pillow，opencv-python，numpy，scikit-image，python-pptx
 #需要使用合并ppt需要安装python-pptx模块
 ```
 
@@ -41,7 +41,7 @@ python opencv.py -f file --ahash -s 0.98
   相似信息多推荐使用0.98
   
   ```shell
-python opencv.py -f file --ssim -s 0.98
+  python opencv.py -f file --ssim -s 0.98
   ```
   
   > ==增加跳帧功能，视频连贯性比较好时使用==，即舍弃一些画面。

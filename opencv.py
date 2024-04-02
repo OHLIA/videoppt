@@ -3,8 +3,8 @@ import cv2 as cv
 import os
 from PIL import ImageGrab
 import sys
-from skimage.measure import compare_ssim
-#
+#from skimage.measure import compare_ssim
+from skimage.metrics import structural_similarity as compare_ssim
 import argparse
 import pptx
 from pptx.util import Inches
